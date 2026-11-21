@@ -1,0 +1,10 @@
+{
+  "name": "THAKOS Digital Account Diary",
+  "short_name": "THAKOS",
+  "description": "Daily account diary for THAKOS Industries",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#101c2c",
+  "icons": []
+}
