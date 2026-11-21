@@ -1,0 +1,5 @@
+[build]
+  # Always start from a clean install of package-lock.json so a stale or
+  # partial node_modules folder can never break the Vite build.
+  command = "npm ci && npm run build"
+  publish = "dist"
