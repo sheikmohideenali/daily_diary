@@ -103,7 +103,7 @@ function App() {
   const selectedDiary=currentDiary || {date:selectedDate,pageNumber:'—',openingBalance:0,totalCredit:0,totalDebit:0,closingBalance:0,status:'open'}
   const pageTitle=nav.find(n=>n.id===page)?.label||'Dashboard'
   const showAdd=()=>{const d=currentData.diaries.find(x=>x.date===selectedDate);if(d?.status==='closed'){setToast('This diary is closed. Reopen it before adding entries.');return}setEditTx(null);setModal('transaction')}
-  const changeDiaryStatus=()=>{if(!currentDiary)return;const next={...currentData,diaries:currentData.diaries.map(d=>d.id===currentDiary.id?{...d,status:d.status==='closed'?'open':'closed'}:d)};persist(next);setToast(currentDiary.status==='closed'?'Diary reopened.':'Diary closed successfully.')}
+  const changeDiaryStatus=()=>{if(!currentDiary)return;const now=new Date().toISOString();const next={...currentData,diaries:currentData.diaries.map(d=>d.id===currentDiary.id?{...d,status:d.status==='closed'?'open':'closed',updatedAt:now}:d)};persist(next);setToast(currentDiary.status==='closed'?'Diary reopened.':'Diary closed successfully.')}
   const downloadDaily=()=>{if(!currentDiary)return setToast('No diary exists for this date.');exportDailyPdf(currentDiary,txs,currentData.settings.companyName)}
   const dailyImage=()=>exportDiaryPng(diaryRef.current,selectedDate).catch(e=>setToast(e.message))
   const changePage=id=>{setPage(id);setMobileNav(false)}
